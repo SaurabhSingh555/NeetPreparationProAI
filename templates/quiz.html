@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET Quiz | {{ subject }} | NEET Prep Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+</head>
+<body>
+    <div class="quiz-bg"></div>
+    
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="images/atom.png" alt="NEET Prep Pro Logo" class="logo-img">
+                <span>NEET<span class="highlight">Prep</span>Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="quiz-header">
+            <div class="quiz-info">
+                <h1>{{ subject }} <span class="highlight">Quiz</span></h1>
+                <div class="quiz-meta">
+                    <span class="badge year-badge">{{ year }}</span>
+                    <span class="badge question-count">{{ questions|length }} Questions</span>
+                </div>
+            </div>
+            
+            <div class="timer-container">
+                <div class="timer" id="timer">
+                    <div class="timer-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="timer-text">
+                        <div class="timer-label">Time Remaining</div>
+                        <div class="time-display" id="time-display">{{ timer_minutes }}:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-info">
+                <span class="current-question" id="current-question">1</span>
+                <span class="total-questions">/ {{ questions|length }}</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+        </div>
+        
+        <form action="/result" method="POST" id="quiz-form">
+            {% for question in questions %}
+            <div class="question-card" id="question-{{ loop.index }}">
+                <div class="question-header">
+                    <div class="question-number">Question {{ loop.index }}</div>
+                    <div class="question-marks">4 Marks</div>
+                </div>
+                
+                <div class="question-text">{{ question['Question'] }}</div>
+                
+                <div class="options-grid">
+                    <div class="option">
+                        <input type="radio" name="answer_{{ question['Question'] }}" value="A" id="A_{{ loop.index }}">
+                        <label for="A_{{ loop.index }}">
+                            <span class="option-letter">A</span>
+                            <span class="option-text">{{ question['Option A'] }}</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" name="answer_{{ question['Question'] }}" value="B" id="B_{{ loop.index }}">
+                        <label for="B_{{ loop.index }}">
+                            <span class="option-letter">B</span>
+                            <span class="option-text">{{ question['Option B'] }}</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" name="answer_{{ question['Question'] }}" value="C" id="C_{{ loop.index }}">
+                        <label for="C_{{ loop.index }}">
+                            <span class="option-letter">C</span>
+                            <span class="option-text">{{ question['Option C'] }}</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" name="answer_{{ question['Question'] }}" value="D" id="D_{{ loop.index }}">
+                        <label for="D_{{ loop.index }}">
+                            <span class="option-letter">D</span>
+                            <span class="option-text">{{ question['Option D'] }}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div class="quiz-actions">
+                <button type="button" class="btn btn-outline" id="prev-btn">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                
+                <button type="button" class="btn btn-outline" id="next-btn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <button type="submit" class="btn btn-primary" id="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Answers
+                </button>
+            </div>
+        </form>
+    </main>
+    
+    <script>
+        // Timer functionality
+        const endTime = new Date("{{ end_time }}");
+        
+        function updateTimer() {
+            const now = new Date();
+            const diff = endTime - now;
+            
+            if (diff <= 0) {
+                document.getElementById('time-display').textContent = "00:00";
+                document.getElementById('quiz-form').submit();
+                return;
+            }
+            
+            const minutes = Math.floor(diff / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('time-display').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Change color when time is running out
+            const timer = document.getElementById('timer');
+            if (minutes < 2) {
+                timer.style.background = 'var(--danger)';
+                timer.style.animation = 'pulse 1s infinite';
+            } else if (minutes < 5) {
+                timer.style.background = 'var(--warning)';
+                timer.style.color = 'var(--dark)';
+            }
+        }
+        
+        // Update timer every second
+        updateTimer();
+        setInterval(updateTimer, 1000);
+        
+        // Progress tracking
+        const totalQuestions = {{ questions|length }};
+        const progressBar = document.getElementById('progress-bar');
+        
+        function updateProgress() {
+            const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+            const currentQuestion = answered + 1 > totalQuestions ? totalQuestions : answered + 1;
+            
+            document.getElementById('current-question').textContent = currentQuestion;
+            progressBar.style.width = `${(answered / totalQuestions) * 100}%`;
+        }
+        
+        // Update progress when an option is selected
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', updateProgress);
+        });
+        
+        // Initialize progress
+        updateProgress();
+        
+        // Navigation between questions
+        let currentVisibleQuestion = 1;
+        
+        function showQuestion(index) {
+            document.querySelectorAll('.question-card').forEach((card, i) => {
+                if (i + 1 === index) {
+                    card.style.display = 'block';
+                    currentVisibleQuestion = index;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Update button states
+            document.getElementById('prev-btn').disabled = index === 1;
+            document.getElementById('next-btn').disabled = index === totalQuestions;
+            
+            // Scroll to top of question
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentVisibleQuestion > 1) {
+                showQuestion(currentVisibleQuestion - 1);
+            }
+        });
+        
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (currentVisibleQuestion < totalQuestions) {
+                showQuestion(currentVisibleQuestion + 1);
+            }
+        });
+        
+        // Initialize with first question visible
+        window.addEventListener('load', () => {
+            showQuestion(1);
+            
+            // Hide all questions except first
+            document.querySelectorAll('.question-card:not(:first-child)').forEach(card => {
+                card.style.display = 'none';
+            });
+        });
+        
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+                70% { box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

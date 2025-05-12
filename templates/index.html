@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET Prep Pro | Ultimate NEET Preparation Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="particles" id="particles-js"></div>
+    
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+               
+                <span>NEET<span class="highlight">Prep</span>Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="active"><i class="fas fa-home"></i> Home</a>
+                <a href="#features"><i class="fas fa-star"></i> Features</a>
+                <a href="/motivation"><i class="fas fa-fire"></i> Motivation</a>
+                <a href="/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="#" class="btn-login"><i class="fas fa-user"></i> Login</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Ace Your <span class="highlight">NEET</span> Exam</h1>
+                <p class="hero-subtitle">Master the medical entrance exam with India's most comprehensive NEET preparation platform</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="10000">1000+</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="25">2</div>
+                        <div class="stat-label">Years</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="98">87%</div>
+                        <div class="stat-label">% Success</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quiz-form-container">
+                <div class="form-header">
+                    <h3>Start Your Practice</h3>
+                    <div class="form-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                </div>
+                
+                <form action="/quiz" method="POST" class="quiz-form">
+                    <div class="form-group">
+                        <label for="year"><i class="fas fa-calendar-alt"></i> Select Year</label>
+                        <select name="year" id="year" required>
+                            {% for year in years %}
+                                <option value="{{ year }}" {% if year == '2024' %}selected{% endif %}>{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject"><i class="fas fa-book"></i> Select Subject</label>
+                        <select name="subject" id="subject" required>
+                            <option value="">-- Choose Subject --</option>
+                            {% for subject in subjects %}
+                                <option value="{{ subject }}">{{ subject }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="num_questions"><i class="fas fa-question-circle"></i> Number of Questions</label>
+                        <input type="number" name="num_questions" id="num_questions" min="1" max="50" value="10" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timer"><i class="fas fa-clock"></i> Time Limit (minutes)</label>
+                        <input type="number" name="timer" id="timer" min="1" max="180" value="30">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-play"></i> Start Practice Test
+                    </button>
+                </form>
+            </div>
+        </section>
+        
+        <section id="features" class="features-section">
+            <div class="section-header">
+                <h2>Why Choose <span class="highlight">NEET Prep Pro</span></h2>
+                <p>Comprehensive features designed to maximize your NEET score</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="images/dna.png" alt="Previous Year Questions">
+                    </div>
+                    <h3>25+ Years Questions</h3>
+                    <p>Access complete archive of NEET/AIPMT questions since 1994 with detailed solutions</p>
+                    <div class="feature-badge">Most Comprehensive</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="images/molecule.png" alt="Performance Analytics">
+                    </div>
+                    <h3>Smart Analytics</h3>
+                    <p>Track your performance across subjects and identify weak areas with our AI-powered analysis</p>
+                    <div class="feature-badge">AI Powered</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Concept Mastery</h3>
+                    <p>800+ detailed concept videos and 5000+ flashcards for comprehensive understanding</p>
+                    <div class="feature-badge">New</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <div class="section-header">
+                <h2>Success <span class="highlight">Stories</span></h2>
+                <p>What our toppers say about NEET Prep Pro</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "NEET Prep Pro's question bank and mock tests were identical to the actual NEET exam pattern. Scored 680/720!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">A</div>
+                        <div class="author-info">
+                            <h4>Ananya Sharma</h4>
+                            <p>NEET 2023 AIR 42</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The performance analytics helped me identify my weak areas in Organic Chemistry. Improved my score by 45 marks!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">R</div>
+                        <div class="author-info">
+                            <h4>Rahul Verma</h4>
+                            <p>NEET 2023 AIR 87</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               
+                <span>NEET<span class="highlight">Prep</span>Pro</span>
+            </div>
+            
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Resources</h4>
+                    <a href="#">Question Bank</a>
+                    <a href="#">Mock Tests</a>
+                    <a href="#">Study Material</a>
+                </div>
+                
+                <div class="link-group">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Careers</a>
+                </div>
+                
+                <div class="link-group">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 NEET Prep Pro. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

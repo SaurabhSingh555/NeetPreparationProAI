@@ -1,0 +1,41 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer,Subject,Topic,Year
+A particle is moving in a circular path of radius r with constant speed v. The acceleration of the particle is:,v**2/r directed towards center,v**2/r directed away from center,Zero,v**2/r tangential to the path,A,Physics,Circular Motion,2023
+The dimensional formula of Planck's constant is:,[ML²T⁻¹],[MLT⁻²],[ML²T⁻²],[MLT⁻¹],A,Physics,Units and Dimensions,2023
+"In a Young's double slit experiment, the fringe width is 0.2 mm. If the whole apparatus is immersed in water (μ = 4/3), the fringe width becomes:",0.15 mm,0.2 mm,0.25 mm,0.3 mm,A,Physics,Wave Optics,2023
+A charged particle enters a uniform magnetic field perpendicular to its velocity. The path of the particle is:,Straight line,Circular,Parabolic,Elliptical,B,Physics,Magnetic Effects of Current,2023
+The escape velocity from the Earth's surface is ve. The escape velocity from a planet having twice the radius and same mean density as Earth is:,ve,√2 ve,2 ve,ve/√2,C,Physics,Gravitation,2023
+A wire of resistance R is stretched to double its length. Its new resistance is:,R,2R,4R,R/2,C,Physics,Current Electricity,2023
+The half-life of a radioactive substance is 10 days. The time taken for the activity to reduce to 1/8th of its initial value is:,20 days,30 days,40 days,80 days,B,Physics,Nuclear Physics,2023
+The work done in moving a charge q through a potential difference V is:,q/V,V/q,qV,V/q,C,Physics,Electrostatics,2023
+"In an LCR series circuit, the current is maximum when:",XL = XC,XL > XC,XL < XC,XL = 0,A,Physics,Alternating Current,2023
+The focal length of a convex lens is 20 cm. Its power is:,+5 D,-5 D,+2 D,-2 D,A,Physics,Ray Optics,2023
+A body of mass m is moving with velocity v. Its kinetic energy is:,mv²,mv²/2,mv/2,1/2 mv²,D,Physics,"Work, Power and Energy",2023
+The time period of a simple pendulum of length L is:,2π√(L/g),2π√(g/L),π√(L/g),π√(g/L),A,Physics,Oscillations,2023
+"A transformer is used to step up the voltage from 220 V to 2200 V. If the primary coil has 100 turns, the number of turns in the secondary coil is:",1000,10,2000,2200,A,Physics,Electromagnetic Induction,2023
+The speed of light in vacuum is:,3 × 10⁸ m/s,3 × 10⁶ m/s,3 × 10⁷ m/s,3 × 10⁹ m/s,A,Physics,Electromagnetic Waves,2023
+The SI unit of magnetic field is:,Tesla,Weber,Gauss,Henry,A,Physics,Magnetism,2023
+A capacitor of capacitance C is charged to a potential V. The energy stored in the capacitor is:,CV²,1/2 CV²,CV,1/2 V²/C,B,Physics,Electrostatics,2023
+The refractive index of a medium is 1.5. The speed of light in the medium is:,2 × 10⁸ m/s,3 × 10⁸ m/s,1.5 × 10⁸ m/s,4.5 × 10⁸ m/s,A,Physics,Optics,2023
+The potential energy of a spring stretched by a distance x is:,1/2 kx²,kx²,1/2 kx,kx,A,Physics,"Work, Power and Energy",2023
+"The resistance of a wire is R. If its length is doubled and cross-sectional area is halved, its new resistance is:",2R,4R,R,8R,D,Physics,Current Electricity,2023
+A projectile is fired with a velocity u at an angle θ to the horizontal. The maximum height reached is:,u² sin²θ / (2g),u² cos²θ / (2g),u² / (2g),u² sinθ / g,A,Physics,Motion in Two Dimensions,2023
+The equivalent resistance between A and B in the given circuit is:,2Ω,4Ω,6Ω,8Ω,B,Physics,Current Electricity,2023
+Two particles are projected with the same velocity at angles 30° and 60° with the horizontal. The range of the first particle is R. The range of the second particle is:,R,2R,R/2,√2 R,A,Physics,Motion in Two Dimensions,2023
+The frequency of oscillation of a simple pendulum of length L and mass m is:,(1/2π)√(g/L),(1/2π)√(L/g),(1/2π)√(g/Lm),(1/2π)√(m/gL),A,Physics,Oscillations,2023
+"In a Young's double-slit experiment, the distance between two slits is d and the distance between the slits and the screen is L. The fringe width is:",d/L,λL/d,dλ/L,dλ/L²,C,Physics,Wave Optics,2023
+The force experienced by a current-carrying conductor in a magnetic field is:,BIL,ILB,IL/B,B²IL,C,Physics,Magnetic Effects of Current,2023
+A piece of copper is heated to a high temperature and then dropped in water. The temperature of water rises. The increase in temperature is due to:,Conduction,Convection,Radiation,Evaporation,A,Physics,Heat and Thermodynamics,2023
+Which of the following is a scalar quantity?,Velocity,Acceleration,Force,Work,D,Physics,Kinematics,2023
+The SI unit of electric field is:,Newton per Coulomb,Volt per meter,Amperes per meter,Farad per meter,B,Physics,Electrostatics,2023
+The energy of a photon of light is proportional to:,Its frequency,Its wavelength,Its amplitude,Its intensity,A,Physics,Electromagnetic Waves,2023
+Which of the following is not a type of electromagnetic wave?,Radio waves,Microwaves,Sound waves,X-rays,C,Physics,Electromagnetic Waves,2023
+A galvanometer of resistance 10Ω is converted into an ammeter by placing a shunt resistance of 5Ω in parallel. The total resistance of the ammeter is:,5Ω,10Ω,15Ω,20Ω,A,Physics,Current Electricity,2023
+Which of the following is responsible for the bending of light when it passes through a prism?,Reflection,Refraction,Diffraction,Dispersion,B,Physics,Optics,2023
+A body is acted upon by two forces 10N and 15N. The resultant force is:,5N,10N,20N,25N,D,Physics,Newton's Laws of Motion,2023
+Which of the following does not depend on the velocity of the object?,Kinetic energy,Momentum,Gravitational potential energy,Magnetic field,C,Physics,"Work, Power and Energy",2023
+A circuit consisting of a 2Ω resistor and a 4Ω resistor in series is connected to a 12V battery. The current flowing through the circuit is:,2A,3A,4A,6A,B,Physics,Current Electricity,2023
+"In a resonance tube experiment, the frequency of tuning fork is 256 Hz. The length of the tube is 1 m. The velocity of sound in air is:",320 m/s,340 m/s,360 m/s,380 m/s,B,Physics,Waves,2023
+The half-life of a radioactive substance is 10 years. The time taken for its activity to reduce to 1/16th of its initial value is:,20 years,30 years,40 years,50 years,C,Physics,Nuclear Physics,2023
+"In a moving coil galvanometer, the magnetic field is produced by:",Permanent magnet,Electromagnet,Coil itself,Battery,B,Physics,Magnetic Effects of Current,2023
+The angle of deviation produced by a prism is:,Always 90°,Always 60°,Always 180°,Depends on the angle of incidence,D,Physics,Optics,2023
+Which of the following is an example of a non-conservative force?,Gravitational force,Frictional force,Electromagnetic force,Spring force,B,Physics,"Work, Power and Energy",2023

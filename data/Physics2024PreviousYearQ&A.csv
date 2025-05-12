@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer,Subject,Topic,Year
+Which of the following is not a greenhouse gas?,CO2,CH4,O3,H2,D,Chemistry,Environmental Chemistry,2023
+"At any instant of time t, the displacement of any particle is given by 2t - 1 (SI unit) under the influence of force of 5N. The value of instantaneous power is (in SI unit):",5,7,6,10,D,Physics,"Work, Power and Energy",2024
+"If the monochromatic source in Young’s double slit experiment is replaced by white light, then",Central dark fringe with coloured fringes,Central bright fringe with coloured fringes,All bright fringes equal width,Interference disappears,B,Physics,Wave Optics,2024
+"In the nuclear emission stated above, the mass number and atomic number of the product Q respectively, are:","286, 80","288, 82","286, 81","280, 81",C,Physics,Nuclei,2024
+Match the materials to their magnetic susceptibilities.,"A – II, B – I, C – III, D – IV","A – III, B – II, C – I, D – IV","A – IV, B – III, C – II, D – I","A – II, B – III, C – IV, D – I",D,Physics,Magnetism and Matter,2024
+"In the given circuit, the equivalent capacitance between A and B is:",1 µF,0.5 µF,4 µF,2 µF,D,Physics,Electrostatics,2024
+A thin spherical shell is charged. The potential difference between two internal points C and P is:,5×10¹,5.05×10¹,0,5.3×10¹,C,Physics,Electrostatics,2024
+The logic gate output Y matches which gate?,NOR,OR,AND,NAND,C,Physics,Logic Gates,2024
+An unpolarized light hits glass at Brewster’s angle. Which is true?,Refracted light is completely polarized,Both are completely polarized,"Reflected fully, refracted partially",Reflected partially,C,Physics,Polarization,2024
+"A coil of 100 turns (10 cm radius, 7 A current). Magnetic field at center is:",4.4 T,4.4 mT,44 T,44 mT,B,Physics,Magnetostatics,2024
+One magnet moves toward another solenoid. Current directions in solenoids 1 and 2 are:,BA and CD,AB and CD,BA and DC,AB and DC,D,Physics,Electromagnetic Induction,2024
+"Two bodies A and B of equal mass collide inelastically. A moves with v, B is at rest. Final velocity v. Find v_A:v_B",2:1,4:1,1:4,1:2,A,Physics,Laws of Motion,2024
+"Battery with emf 10V, internal resistance 1Ω, external resistance 4Ω. Terminal voltage is:",6V,8V,10V,4V,B,Physics,Current Electricity,2024
+A particle in circular motion maintains:,Constant acceleration,"Constant velocity, varying acceleration",Varying velocity and varying acceleration,Constant velocity,C,Physics,Circular Motion,2024
+"A ray enters a prism (angle of incidence 30°), travels parallel to base. Refractive index is:",√5/2,√3/4,3/2,5/4,A,Physics,Optics,2024
+"A bullock cart wheel rolls on a road with linear speed v. Point P (top) and Q (bottom), speeds?",P faster than Q,P = Q,P zero,P slower than Q,A,Physics,Rotation,2024
+Thermodynamic cycle abcda; work done from b to c is:,30 J,-90 J,-60 J,Zero,D,Physics,Thermodynamics,2024
+"In an ideal transformer, turns ratio Ns/Np = 2. Voltage ratio Vs/Vp is:",2:1,1:1,1:4,1:2,A,Physics,Alternating Current,2024
+"Maximum elongation of 1m steel wire (elastic limit = 8×10⁷ N/m², Y = 2×10¹¹ N/m²):",0.4 mm,40 mm,8 mm,4 mm,D,Physics,Mechanical Properties of Solids,2024
+A planet has 1/10th mass and half the diameter of Earth. Gravity on it is:,9.8 m/s²,4.9 m/s²,3.92 m/s²,19.6 m/s²,C,Physics,Gravitation,2024
+"In a vernier caliper, (N+1) divisions = N main scale divisions. If 1 MSD = 0.1 mm, LC is:",100/(N+1) cm,100N,10(N+1),10N,A,Physics,Measurements,2024
+Statement I: Atoms are neutral (equal +ve and -ve charges). Statement II: Each atom emits characteristic spectrum.,Both incorrect,"I correct, II incorrect","I incorrect, II correct",Both correct,B,Physics,Structure of Atom,2024
+10 N force applied to 2 kg block A. Block B (3 kg) in contact. Find force by A on B (frictionless).,4 N,6 N,10 N,Zero,B,Physics,Laws of Motion,2024
+Which have same dimensions as solid angle?,Stress and angle,Strain and arc,Angular speed and stress,Strain and angle,D,Physics,Dimensions and Units,2024
+"Moment of inertia of rod (midpoint axis) is 2400 g·cm², mass 400g. Find length:",17.5 cm,20.7 cm,72.0 cm,8.5 cm,D,Physics,Rotational Motion,2024
+"A wire of resistance 100Ω cut into 10 parts. First 5 in series, next 5 in parallel. Final resistance?",52Ω,55Ω,60Ω,26Ω,A,Physics,Current Electricity,2024
+SHM: x=5sin(πt+π/3). Find amplitude and time period.,"5 m, 2 s","5 cm, 1 s","5 m, 1 s","5 cm, 2 s",A,Physics,Oscillations,2024
+"Which statements about photons are correct? A. E=hv, B. Speed = c, C. p=hv/c, D. Energy and momentum conserved in collision, E. Photon has charge","A, B, C, D","A, C, D","A, B, D, E","A, B",A,Physics,Dual Nature of Matter,2024
+"Match hydrogen transitions to wavelengths (nm): A. 3→2, B. 4→2, C. 5→2, D. 6→2","A–III, B–IV, C–II, D–I","A–IV, B–III, C–I, D–II","A–I, B–II, C–III, D–IV","A–II, B–I, C–IV, D–III",A,Physics,Atomic Physics,2024
+"A logic circuit has truth table: A=0 B=0 Y=1, A=0 B=1 Y=0, A=1 B=0 Y=1, A=1 B=1 Y=0. What is Y?",A’B + AB,B,B’,AB’ + A’B,B,Physics,Logic Gates,2024
+"Magnetic needle (I = 9.8×10⁻⁶ kg·m², m = x×10⁻² Am²) oscillates in 0.049 T field. 20 oscillations in 5s. Find x.",128π,250π,1280π,25π,C,Physics,Magnetism,2024
+A bob on a string whirls in a horizontal circle. Speed doubles. New tension?,4T,T/4,2T,T,A,Physics,Circular Motion,2024
+"Metal bar (Y = 0.5×10¹¹ N/m², α = 10⁻⁶/°C, A = 10⁻⁴ m²), heated 0°C to 100°C without expanding. Force developed?",50×10³ N,100×10³ N,2×10³ N,5×10³ N,A,Physics,Thermal Stress,2024
+Choose circuit that balances a Wheatstone bridge.,Option A,Option B,Option C,Option D,D,Physics,Current Electricity,2024
+"Telescope: objective f = 140 cm, eyepiece f = 5 cm. Magnifying power?",28,17,32,34,A,Physics,Ray Optics,2024
+Iron bar of length L with moment M bent so arms are 60° apart. New magnetic moment?,M/2,2M,M/√3,M,A,Physics,Magnetism,2024
+"10 µF capacitor connected to 210V, 50Hz AC. Peak current (π = 3.14)?",0.93 A,1.20 A,0.35 A,0.58 A,A,Physics,AC Circuits,2024
+"Two heaters (1kW, 2kW) connected in series and then parallel. Ratio of powers?",2:9,1:2,2:3,1:1,A,Physics,Current Electricity,2024
+Which is NOT true of electromagnetic waves in free space?,Electric and magnetic energy densities equal,Speed is 1/μ0ε0,Originate from uniformly moving charges,Transverse nature,C,Physics,Electromagnetic Waves,2024
+A force F=αt + βt² acts. Which is dimensionless?,αt/β,αβt,α/βt,βt/α,A,Physics,Units & Dimensions,2024
+
+
+
+"A particle is moving in a circular path of radius r with constant speed v. The acceleration of the particle is:",v²/r directed towards center,v²/r directed away from center,Zero,v²/r tangential to the path,A,Physics,Circular Motion,2023
+"The dimensional formula of Planck's constant is:",[ML²T⁻¹],[MLT⁻²],[ML²T⁻²],[MLT⁻¹],A,Physics,Units and Dimensions,2023
+"In a Young's double slit experiment, the fringe width is 0.2 mm. If the whole apparatus is immersed in water (μ = 4/3), the fringe width becomes:",0.15 mm,0.2 mm,0.25 mm,0.3 mm,A,Physics,Wave Optics,2023
+"A charged particle enters a uniform magnetic field perpendicular to its velocity. The path of the particle is:",Straight line,Circular,Parabolic,Elliptical,B,Physics,Magnetic Effects of Current,2023
+"The escape velocity from the Earth's surface is ve. The escape velocity from a planet having twice the radius and same mean density as Earth is:",ve,√2 ve,2 ve,ve/√2,C,Physics,Gravitation,2023
+"A wire of resistance R is stretched to double its length. Its new resistance is:",R,2R,4R,R/2,C,Physics,Current Electricity,2023
+"The half-life of a radioactive substance is 10 days. The time taken for the activity to reduce to 1/8th of its initial value is:",20 days,30 days,40 days,80 days,B,Physics,Nuclear Physics,2023
+"The work done in moving a charge q through a potential difference V is:",q/V,V/q,qV,V/q,C,Physics,Electrostatics,2023
+"In an LCR series circuit, the current is maximum when:",XL = XC,XL > XC,XL < XC,XL = 0,A,Physics,Alternating Current,2023
+"The focal length of a convex lens is 20 cm. Its power is:",+5 D,-5 D,+2 D,-2 D,A,Physics,Ray Optics,2023
+"A bob on a string whirls in a horizontal circle. Speed doubles. New tension?",4T,T/4,2T,T,A,Physics,Circular Motion,2024
+"The time period of a simple pendulum of length L is:",2π√(L/g),2π√(g/L),π√(L/g),π√(g/L),A,Physics,Oscillations,2023
+"A transformer is used to step up the voltage from 220 V to 2200 V. If the primary coil has 100 turns, the number of turns in the secondary coil is:",1000,10,2000,2200,A,Physics,Electromagnetic Induction,2023
+"The speed of light in vacuum is:",3 × 10⁸ m/s,3 × 10⁶ m/s,3 × 10⁷ m/s,3 × 10⁹ m/s,A,Physics,Electromagnetic Waves,2023
+"The SI unit of magnetic field is:",Tesla,Weber,Gauss,Henry,A,Physics,Magnetism,2023
+"A capacitor of capacitance C is charged to a potential V. The energy stored in the capacitor is:",CV²,1/2 CV²,CV,1/2 V²/C,B,Physics,Electrostatics,2023
+"The refractive index of a medium is 1.5. The speed of light in the medium is:",2 × 10⁸ m/s,3 × 10⁸ m/s,1.5 × 10⁸ m/s,4.5 × 10⁸ m/s,A,Physics,Optics,2023
