@@ -4,6 +4,8 @@ import random
 from datetime import datetime, timedelta
 import os
 import csv
+from flask_session import Session
+import pytz
 
 app = Flask(__name__)
 
@@ -48,6 +50,13 @@ SUBJECT_FILE_MAP = {
         '2016': 'Chemistry_2016_Neet_Unique_40_Questions.csv',
     }
 }
+
+# Configure server-side sessions
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=12)
+Session(app)
+
+app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'your-secret-key-here'
 
 def load_datasets():
     """Load all datasets from the data directory with proper error handling"""
@@ -118,9 +127,6 @@ def load_datasets():
 # Load all datasets at startup
 all_datasets = load_datasets()
 
-app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'your-secret-key-here'
-
-
 @app.route('/motivation')
 def motivation():
     success_stories = [
@@ -178,7 +184,7 @@ def motivation():
             'title': "From ICU Bed to NEET Rank 🏥➡️🎓",
             'content': """In class 12, I was hospitalized for 3 months with a lung condition. Doctors doubted I could give the exam. 
             \n\n🛏️ While recovering, I studied in bed using audio lectures and NEET-prep podcasts. 
-            \n✍️ Couldn’t write much, so revised using flashcards and mind maps. 
+            \n✍️ Couldn't write much, so revised using flashcards and mind maps. 
             \n⚡ Came back stronger: 12 hours daily prep post-recovery for 5 months. 
             \n\nNot only did I sit for NEET, I scored 660 and got admission to a top college. Mindset matters more than anything. ❤️‍🔥""",
             'author': "Ishaan B. (Survivor & Student Doctor)",
@@ -186,8 +192,6 @@ def motivation():
         }
     ]
     return render_template('motivation.html', stories=success_stories)
-
-
 
 @app.route('/')
 def home():
@@ -233,19 +237,16 @@ def quiz():
     selected_questions = subject_data.sample(n=min(num_questions, len(subject_data)))
     selected_questions_list = selected_questions.to_dict(orient='records')
     
-    # Calculate end time for the quiz
-    end_time = datetime.now() + timedelta(minutes=timer_minutes)
-    
-    # Store in session
+    # Store UTC time in session
     session['selected_questions'] = selected_questions_list
-    session['end_time'] = end_time.isoformat()
+    session['end_time'] = (datetime.now(pytz.UTC) + timedelta(minutes=timer_minutes)).isoformat()
     session['timer_minutes'] = timer_minutes
     session['subject'] = subject
     session['year'] = year
     
     return render_template('quiz.html', 
                         questions=selected_questions_list,
-                        end_time=end_time.isoformat(),
+                        end_time=session['end_time'],
                         timer_minutes=timer_minutes,
                         subject=subject,
                         year=year)
@@ -255,11 +256,13 @@ def get_time_remaining():
     if 'end_time' not in session:
         return jsonify({'error': 'No active quiz session'}), 400
         
-    end_time = datetime.fromisoformat(session['end_time'])
-    remaining = end_time - datetime.now()
+    # Use UTC timezone for consistency across servers
+    utc = pytz.UTC
+    end_time = datetime.fromisoformat(session['end_time']).replace(tzinfo=utc)
+    now = datetime.now(utc)
+    remaining = (end_time - now).total_seconds()
     
-    # If time is up, return zeros
-    if remaining.total_seconds() <= 0:
+    if remaining <= 0:
         return jsonify({
             'minutes': 0,
             'seconds': 0,
@@ -268,9 +271,9 @@ def get_time_remaining():
         })
     
     return jsonify({
-        'minutes': max(0, remaining.seconds // 60),
-        'seconds': max(0, remaining.seconds % 60),
-        'total_seconds': max(0, int(remaining.total_seconds())),
+        'minutes': int(remaining // 60),
+        'seconds': int(remaining % 60),
+        'total_seconds': int(remaining),
         'time_up': False
     })
 
@@ -342,4 +345,5 @@ if __name__ == '__main__':
         os.makedirs(DATASET_DIR)
         print(f"Created data directory at: {DATASET_DIR}")
     
-    app.run(debug=True, port=5000)
+    app.run(host='0.0.0.0', port=10000)
+    

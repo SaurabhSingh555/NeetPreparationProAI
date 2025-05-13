@@ -118,17 +118,69 @@
             </div>
         </form>
     </main>
+  // Replace the entire script section with this:
+
+<script>
+    // Improved timer with error handling
+    let timerInterval;
     
-    <script>
-        // Timer functionality
-        const endTime = new Date("{{ end_time }}");
+    function startTimer() {
+        // Clear any existing timer
+        if (timerInterval) clearInterval(timerInterval);
         
-        function updateTimer() {
+        // Initial update
+        updateTimer();
+        
+        // Set up polling every second
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+    
+    function updateTimer() {
+        fetch('/get_time_remaining')
+            .then(response => {
+                if (!response.ok) throw new Error('Network error');
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    return;
+                }
+                
+                if (data.time_up) {
+                    clearInterval(timerInterval);
+                    document.getElementById('quiz-form').submit();
+                } else {
+                    document.getElementById('time-display').textContent = 
+                        `${data.minutes.toString().padStart(2, '0')}:${data.seconds.toString().padStart(2, '0')}`;
+                    
+                    // Visual warnings
+                    const timer = document.getElementById('timer');
+                    if (data.minutes < 2) {
+                        timer.style.background = '#dc3545';
+                        timer.style.animation = 'pulse 1s infinite';
+                    } else if (data.minutes < 5) {
+                        timer.style.background = '#ffc107';
+                        timer.style.color = '#2c3e50';
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Timer error:', error);
+                // Fallback to client-side timer if server fails
+                if (!timerInterval) startClientSideTimer();
+            });
+    }
+    
+    // Fallback client-side timer
+    function startClientSideTimer() {
+        const endTime = new Date("{{ end_time }}");
+        timerInterval = setInterval(() => {
             const now = new Date();
             const diff = endTime - now;
             
             if (diff <= 0) {
-                document.getElementById('time-display').textContent = "00:00";
+                clearInterval(timerInterval);
                 document.getElementById('quiz-form').submit();
                 return;
             }
@@ -138,23 +190,14 @@
             
             document.getElementById('time-display').textContent = 
                 `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Change color when time is running out
-            const timer = document.getElementById('timer');
-            if (minutes < 2) {
-                timer.style.background = 'var(--danger)';
-                timer.style.animation = 'pulse 1s infinite';
-            } else if (minutes < 5) {
-                timer.style.background = 'var(--warning)';
-                timer.style.color = 'var(--dark)';
-            }
-        }
+        }, 1000);
+    }
+    
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        startTimer();
         
-        // Update timer every second
-        updateTimer();
-        setInterval(updateTimer, 1000);
-        
-        // Progress tracking
+        // Progress tracking (existing code)
         const totalQuestions = {{ questions|length }};
         const progressBar = document.getElementById('progress-bar');
         
@@ -166,67 +209,33 @@
             progressBar.style.width = `${(answered / totalQuestions) * 100}%`;
         }
         
-        // Update progress when an option is selected
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', updateProgress);
         });
         
-        // Initialize progress
         updateProgress();
         
-        // Navigation between questions
+        // Question navigation (existing code)
         let currentVisibleQuestion = 1;
         
         function showQuestion(index) {
             document.querySelectorAll('.question-card').forEach((card, i) => {
-                if (i + 1 === index) {
-                    card.style.display = 'block';
-                    currentVisibleQuestion = index;
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = i + 1 === index ? 'block' : 'none';
             });
-            
-            // Update button states
+            currentVisibleQuestion = index;
             document.getElementById('prev-btn').disabled = index === 1;
             document.getElementById('next-btn').disabled = index === totalQuestions;
-            
-            // Scroll to top of question
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         document.getElementById('prev-btn').addEventListener('click', () => {
-            if (currentVisibleQuestion > 1) {
-                showQuestion(currentVisibleQuestion - 1);
-            }
+            if (currentVisibleQuestion > 1) showQuestion(currentVisibleQuestion - 1);
         });
         
         document.getElementById('next-btn').addEventListener('click', () => {
-            if (currentVisibleQuestion < totalQuestions) {
-                showQuestion(currentVisibleQuestion + 1);
-            }
+            if (currentVisibleQuestion < totalQuestions) showQuestion(currentVisibleQuestion + 1);
         });
         
-        // Initialize with first question visible
-        window.addEventListener('load', () => {
-            showQuestion(1);
-            
-            // Hide all questions except first
-            document.querySelectorAll('.question-card:not(:first-child)').forEach(card => {
-                card.style.display = 'none';
-            });
-        });
-        
-        // Add pulse animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
-                70% { box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-</body>
-</html>
+        showQuestion(1);
+    });
+</script>
